@@ -1,0 +1,34 @@
+---
+about:
+  template: jolla
+  id: about-block
+  image: "img/my_image.jpg"
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/aphsansar
+    - icon: github
+      text: Github
+      href: https://github.com/deepbas
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/deepakbastola/
+    - icon: envelope
+      text: Email
+      href: "mailto:mail.deepbas@gmail.com"  
+---
+
+::: {#about-block}
+:::
+
+# Welcome to my website!
+
+I am a visiting assistant professor of statistics at Carleton College. My research interests include Bayesian statistics, time series methodology, and statistical computation.
+
+
+<!-- ```{=html} -->
+<!-- <div  style="margin: 30px; text-align: center;"> -->
+<!-- <a class="btn btn-primary" href="https://deepbas.io/" role="button" target="_blank" style="padding: 15px 30px;">View the tutorial for this template (+ download link)</a> -->
+<!-- </div> -->
+<!-- ``` -->
+

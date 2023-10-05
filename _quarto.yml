@@ -1,0 +1,74 @@
+
+# website settings
+website:
+  title: "Deepak Bastola"                                # Your name
+  description: "Finding rhythms in data"   # A brief slogan (optional)
+  image: img/my_image.png
+  
+  favicon: img/favicon.png
+  
+  # start of the navigation bar at the top of the website
+  navbar:
+    pinned: true
+    logo: /img/logo.png
+    
+    # your sub-pages
+    left:
+      - text: "Research Projects"
+        href: Research%20Projects/index.qmd
+      - text: "Courses"
+        href: Courses/index.qmd
+      - text: "CV"
+        href: CV/index.qmd
+    
+    # your social media handles
+    right:
+      - icon: folder-symlink
+        href: https://deepbas.io/
+      - icon: twitter
+        href: https://twitter.com/aphsansar
+      - icon: linkedin
+        href: https://www.linkedin.com/in/deepakbastola/
+      - icon: envelope
+        aria-label: email
+        href: "mailto:deepbas@gmail.com"  
+  
+  
+
+# Don't touch unless you know what you are doing :) ------------
+  search: 
+    location: navbar
+    type: textbox
+  page-footer: 
+    left: |
+      <span class="faux-block">&#169; 2023 Deepak Bastola</span>
+    center: |
+      <span class="faux-block"><a href="https://www./">View the tutorial for this template!</a></span>
+    right: |
+      <span class="faux-block"><a href="https://github.com/deepbas/">View source on GitHub</a></span>
+
+project:
+  type: website
+  output-dir: docs
+
+  preview: 
+    port: 22222
+    browser: true
+    watch-inputs: true
+    navigate: true
+
+execute:
+  freeze: true
+
+format:
+  html:
+    fontsize: 1.1em
+    theme: 
+      - pulse
+      - html/styles.scss
+    toc: false
+    code-link: true
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true
