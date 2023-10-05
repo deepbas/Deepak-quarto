@@ -3,7 +3,7 @@
 website:
   title: "Deepak Bastola"                                # Your name
   description: "Finding rhythms in data"   # A brief slogan (optional)
-  image: img/my_image.png
+  image: img/avatar.jpg
   
   favicon: img/favicon.png
   
@@ -64,9 +64,11 @@ format:
   html:
     fontsize: 1.1em
     theme: 
-      - pulse
-      - html/styles.scss
-    toc: false
+      light: cosmo
+      dark: solar
+    css: html/styles.scss
+    toc: true
+    page-layout: full
     code-link: true
     anchor-sections: true
     fig-cap-location: margin

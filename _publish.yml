@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 1fd8a890-dc93-4f5f-aad8-db501eb459d2
+      url: 'https://dbastola.netlify.app'
