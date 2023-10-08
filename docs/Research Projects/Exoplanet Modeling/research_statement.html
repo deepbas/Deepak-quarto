@@ -1,0 +1,2495 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Deepak Bastola - Exoplanet Feature Distributions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../img/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../html/styles.scss">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../img/logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Deepak Bastola</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../Research Projects/index.html" rel="" target="">
+ <span class="menu-text">Research Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Courses/index.html" rel="" target="">
+ <span class="menu-text">Courses</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../CV/index.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://deepbas.io/" rel="" target=""><i class="bi bi-folder-symlink" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/aphsansar" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/deepakbastola/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:deepbas@gmail.com" rel="" target=""><i class="bi bi-envelope" role="img" aria-label="email">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#random-forest-feature-importance-analysis" id="toc-random-forest-feature-importance-analysis" class="nav-link active" data-scroll-target="#random-forest-feature-importance-analysis">Random Forest Feature Importance Analysis</a></li>
+  <li><a href="#pme-feature-importance-analysis" id="toc-pme-feature-importance-analysis" class="nav-link" data-scroll-target="#pme-feature-importance-analysis">PME Feature Importance Analysis</a></li>
+  <li><a href="#uncertainty-quantification-and-feature-reduction-in-pme-feature-importance-analysis" id="toc-uncertainty-quantification-and-feature-reduction-in-pme-feature-importance-analysis" class="nav-link" data-scroll-target="#uncertainty-quantification-and-feature-reduction-in-pme-feature-importance-analysis">Uncertainty Quantification and Feature Reduction in PME Feature Importance Analysis</a>
+  <ul class="collapse">
+  <li><a href="#uncertainty-quantification" id="toc-uncertainty-quantification" class="nav-link" data-scroll-target="#uncertainty-quantification"><strong>Uncertainty Quantification</strong>:</a></li>
+  <li><a href="#feature-reduction" id="toc-feature-reduction" class="nav-link" data-scroll-target="#feature-reduction"><strong>Feature Reduction</strong>:</a></li>
+  <li><a href="#weighted-principal-component-analysis-pca-on-exoplanet-data" id="toc-weighted-principal-component-analysis-pca-on-exoplanet-data" class="nav-link" data-scroll-target="#weighted-principal-component-analysis-pca-on-exoplanet-data">Weighted Principal Component Analysis (PCA) on Exoplanet Data</a></li>
+  <li><a href="#reconstruction-of-exoplanet-data-using-principal-component-analysis-pca" id="toc-reconstruction-of-exoplanet-data-using-principal-component-analysis-pca" class="nav-link" data-scroll-target="#reconstruction-of-exoplanet-data-using-principal-component-analysis-pca">Reconstruction of Exoplanet Data Using Principal Component Analysis (PCA)</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exoplanet Feature Distributions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import required libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The figure below showcases a spectrum integral to exoplanet detection, charting the transit depth against the wavelength in microns. Every observation point in the spectrum carries an inherent uncertainty, denoted by the vertical error bars. To decode and potentially minimize this uncertainty, it’s pivotal to fathom how features like <code>planet radius</code>, <code>planet temperature</code>, and the logarithmic concentrations of <code>H₂O</code>, <code>CO₂</code>, <code>CO</code>, <code>CH₄</code>, and <code>NH₃</code> influence the transit depth. Leveraging interpretative tools like SHAP can provide insights into how these exoplanetary features impact the observed transit depth, refining our understanding and accuracy in exoplanet spectral analysis.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'my_spectrum.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<p><img src="research_statement_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the CSV file into a Pandas DataFrame</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"small_astro.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_backup <span class="op">=</span> df.copy()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_backup.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">planet_radius</th>
+<th data-quarto-table-cell-role="th">planet_temp</th>
+<th data-quarto-table-cell-role="th">log_h2o</th>
+<th data-quarto-table-cell-role="th">log_co2</th>
+<th data-quarto-table-cell-role="th">log_co</th>
+<th data-quarto-table-cell-role="th">log_ch4</th>
+<th data-quarto-table-cell-role="th">log_nh3</th>
+<th data-quarto-table-cell-role="th">x1</th>
+<th data-quarto-table-cell-role="th">x2</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">x43</th>
+<th data-quarto-table-cell-role="th">x44</th>
+<th data-quarto-table-cell-role="th">x45</th>
+<th data-quarto-table-cell-role="th">x46</th>
+<th data-quarto-table-cell-role="th">x47</th>
+<th data-quarto-table-cell-role="th">x48</th>
+<th data-quarto-table-cell-role="th">x49</th>
+<th data-quarto-table-cell-role="th">x50</th>
+<th data-quarto-table-cell-role="th">x51</th>
+<th data-quarto-table-cell-role="th">x52</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>0.559620</td>
+<td>863.394770</td>
+<td>-8.865868</td>
+<td>-6.700707</td>
+<td>-5.557561</td>
+<td>-8.957615</td>
+<td>-3.097540</td>
+<td>0.003836</td>
+<td>0.003834</td>
+<td>...</td>
+<td>0.003938</td>
+<td>0.003941</td>
+<td>0.003903</td>
+<td>0.003931</td>
+<td>0.003983</td>
+<td>0.004019</td>
+<td>0.004046</td>
+<td>0.004072</td>
+<td>0.004054</td>
+<td>0.004056</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>1.118308</td>
+<td>1201.700465</td>
+<td>-4.510258</td>
+<td>-8.228966</td>
+<td>-3.565427</td>
+<td>-7.807424</td>
+<td>-3.633658</td>
+<td>0.015389</td>
+<td>0.015148</td>
+<td>...</td>
+<td>0.015450</td>
+<td>0.015447</td>
+<td>0.015461</td>
+<td>0.015765</td>
+<td>0.016099</td>
+<td>0.016376</td>
+<td>0.016549</td>
+<td>0.016838</td>
+<td>0.016781</td>
+<td>0.016894</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>0.400881</td>
+<td>1556.096477</td>
+<td>-7.225472</td>
+<td>-6.931472</td>
+<td>-3.081975</td>
+<td>-8.567854</td>
+<td>-5.378472</td>
+<td>0.002089</td>
+<td>0.002073</td>
+<td>...</td>
+<td>0.001989</td>
+<td>0.002168</td>
+<td>0.002176</td>
+<td>0.002123</td>
+<td>0.002079</td>
+<td>0.002081</td>
+<td>0.002106</td>
+<td>0.002167</td>
+<td>0.002149</td>
+<td>0.002185</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>0.345974</td>
+<td>1268.624884</td>
+<td>-7.461157</td>
+<td>-5.853334</td>
+<td>-3.044711</td>
+<td>-5.149378</td>
+<td>-3.815568</td>
+<td>0.002523</td>
+<td>0.002392</td>
+<td>...</td>
+<td>0.002745</td>
+<td>0.003947</td>
+<td>0.004296</td>
+<td>0.003528</td>
+<td>0.003352</td>
+<td>0.003629</td>
+<td>0.003929</td>
+<td>0.004363</td>
+<td>0.004216</td>
+<td>0.004442</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>0.733184</td>
+<td>1707.323564</td>
+<td>-4.140844</td>
+<td>-7.460278</td>
+<td>-3.181793</td>
+<td>-5.996593</td>
+<td>-4.535345</td>
+<td>0.002957</td>
+<td>0.002924</td>
+<td>...</td>
+<td>0.003402</td>
+<td>0.003575</td>
+<td>0.003667</td>
+<td>0.003740</td>
+<td>0.003823</td>
+<td>0.003904</td>
+<td>0.003897</td>
+<td>0.004004</td>
+<td>0.004111</td>
+<td>0.004121</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>6</td>
+<td>0.161165</td>
+<td>620.185809</td>
+<td>-4.875000</td>
+<td>-5.074766</td>
+<td>-3.861240</td>
+<td>-5.388011</td>
+<td>-8.390503</td>
+<td>0.000444</td>
+<td>0.000442</td>
+<td>...</td>
+<td>0.000432</td>
+<td>0.000486</td>
+<td>0.000473</td>
+<td>0.000462</td>
+<td>0.000447</td>
+<td>0.000455</td>
+<td>0.000455</td>
+<td>0.000457</td>
+<td>0.000463</td>
+<td>0.000474</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>7</td>
+<td>0.194312</td>
+<td>900.597575</td>
+<td>-8.299899</td>
+<td>-6.850709</td>
+<td>-4.314491</td>
+<td>-3.712038</td>
+<td>-3.951455</td>
+<td>0.001794</td>
+<td>0.001721</td>
+<td>...</td>
+<td>0.001048</td>
+<td>0.001052</td>
+<td>0.000948</td>
+<td>0.000976</td>
+<td>0.001122</td>
+<td>0.001274</td>
+<td>0.001395</td>
+<td>0.001522</td>
+<td>0.001456</td>
+<td>0.001823</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>8</td>
+<td>1.132685</td>
+<td>1176.443900</td>
+<td>-6.765865</td>
+<td>-7.398548</td>
+<td>-3.378307</td>
+<td>-3.763737</td>
+<td>-5.881384</td>
+<td>0.012950</td>
+<td>0.012946</td>
+<td>...</td>
+<td>0.014019</td>
+<td>0.013871</td>
+<td>0.013810</td>
+<td>0.013902</td>
+<td>0.014024</td>
+<td>0.014150</td>
+<td>0.014298</td>
+<td>0.014392</td>
+<td>0.014401</td>
+<td>0.015042</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>9</td>
+<td>0.158621</td>
+<td>1189.209841</td>
+<td>-8.376041</td>
+<td>-6.321977</td>
+<td>-3.243900</td>
+<td>-8.711851</td>
+<td>-3.449195</td>
+<td>0.000444</td>
+<td>0.000445</td>
+<td>...</td>
+<td>0.000562</td>
+<td>0.000595</td>
+<td>0.000571</td>
+<td>0.000590</td>
+<td>0.000628</td>
+<td>0.000663</td>
+<td>0.000692</td>
+<td>0.000734</td>
+<td>0.000718</td>
+<td>0.000736</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>10</td>
+<td>0.660642</td>
+<td>528.023669</td>
+<td>-3.804286</td>
+<td>-8.919378</td>
+<td>-4.686964</td>
+<td>-8.150277</td>
+<td>-3.068319</td>
+<td>0.008997</td>
+<td>0.009035</td>
+<td>...</td>
+<td>0.009435</td>
+<td>0.009375</td>
+<td>0.009315</td>
+<td>0.009357</td>
+<td>0.009563</td>
+<td>0.009739</td>
+<td>0.009821</td>
+<td>0.009890</td>
+<td>0.009819</td>
+<td>0.009734</td>
+</tr>
+</tbody>
+</table>
+
+<p>10 rows × 60 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Columns of interest for planetary and chemical properties and transit depth</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>feature_columns <span class="op">=</span> df.columns[<span class="dv">1</span>:<span class="dv">8</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>transit_depth_column <span class="op">=</span> <span class="st">'x1'</span> <span class="co"># pick the first wavelength</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean and variance for features and transit depth</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>feature_mean <span class="op">=</span> df[feature_columns].mean()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>feature_variance <span class="op">=</span> df[feature_columns].var()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>transit_depth_mean <span class="op">=</span> df[transit_depth_column].mean()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>transit_depth_variance <span class="op">=</span> df[transit_depth_column].var()</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the distributions</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">8</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">4</span>))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(feature_columns):</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    sns.histplot(df[col], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[i])</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    axes[i].set_title(<span class="ss">f'</span><span class="sc">{</span>col<span class="sc">}</span><span class="ch">\n</span><span class="ss">Mean: </span><span class="sc">{</span>feature_mean[col]<span class="sc">:.2f}</span><span class="ch">\n</span><span class="ss">Variance: </span><span class="sc">{</span>feature_variance[col]<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Add visualization for transit depth</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[transit_depth_column], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>axes[<span class="op">-</span><span class="dv">1</span>].set_title(<span class="ss">f'</span><span class="sc">{</span>transit_depth_column<span class="sc">}</span><span class="ch">\n</span><span class="ss">Mean: </span><span class="sc">{</span>transit_depth_mean<span class="sc">:.2f}</span><span class="ch">\n</span><span class="ss">Variance: </span><span class="sc">{</span>transit_depth_variance<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>feature_mean, feature_variance, transit_depth_mean, transit_depth_variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>(planet_radius       0.703714
+ planet_temp      1073.229674
+ log_h2o            -5.934889
+ log_co2            -6.873009
+ log_co             -4.497141
+ log_ch4            -5.799850
+ log_nh3            -6.051791
+ dtype: float64,
+ planet_radius         0.198990
+ planet_temp      154495.743225
+ log_h2o               3.130868
+ log_co2               1.649658
+ log_co                0.738255
+ log_ch4               3.208283
+ log_nh3               3.050545
+ dtype: float64,
+ 0.009442470522591322,
+ 0.00016172106267489707)</code></pre>
+</div>
+</div>
+<p>The provided visualizations and statistics shed light on the distribution of various exoplanetary features and the observed transit depth at the <code>x1</code> wavelength.</p>
+<ul>
+<li><p><strong>Planet Radius</strong>: This feature, with a mean value of approximately 0.7037 and variance of 0.1989, mostly lies between 0.5 and 1.5 as depicted in its histogram.</p></li>
+<li><p><strong>Planet Temperature</strong>: Exhibiting a wider spread, the temperature has a mean of approximately 1073.29 K and variance of 154495.74 K².</p></li>
+<li><p><strong>Logarithmic Concentrations</strong>:</p>
+<ul>
+<li><strong>H₂O</strong>: Mean concentration of -5.93 with a variance of 3.13.</li>
+<li><strong>CO₂</strong>: Mean concentration of -6.87 with a variance of 1.65.</li>
+<li><strong>CO</strong>: Mean concentration of -4.50 with a variance of 0.74.</li>
+<li><strong>CH₄</strong>: Mean concentration of -5.80 with a variance of 3.21.</li>
+<li><strong>NH₃</strong>: Mean concentration of -6.05 with a variance of 3.05.</li>
+</ul></li>
+<li><p><strong>Transit Depth at x1 Wavelength</strong>: This depth, crucial for exoplanet detection, has an almost singular value near 0, with a mean of approximately 0.0094 and a negligible variance of 0.00006.</p></li>
+</ul>
+<p>These distributions and their accompanying statistics offer invaluable insights into the data’s nature and its inherent variability, essential for accurate spectral analysis and interpretation.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import required libraries for modeling and SHAP values</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shap</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the feature matrix (X) and the target vector (y)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.iloc[:, <span class="dv">1</span>:<span class="dv">8</span>]</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'x1'</span>]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Train an XGBoost model</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> xgb.XGBRegressor(objective <span class="op">=</span><span class="st">'reg:squarederror'</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the SHAP explainer</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>explainer <span class="op">=</span> shap.Explainer(model)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate SHAP values</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>shap_values <span class="op">=</span> explainer(X)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary plot for SHAP values</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>shap.summary_plot(shap_values, X, title<span class="op">=</span><span class="st">'Shapley Feature Importance'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>SHAP (SHapley Additive exPlanations) values stem from cooperative game theory and provide a way to interpret machine learning model predictions. Each feature in a model is analogous to a player in a game, and the contribution of each feature to a prediction is like the payout a player receives in the game. In SHAP, we calculate the value of each feature by considering all possible combinations (coalitions) of features, assessing the change in prediction with and without that feature. The resulting value, the Shapley value, represents the average contribution of a feature to all possible predictions.</p>
+<p>The summary plot visualizes these values. Each dot represents a SHAP value for a specific instance of a feature; positive values (right of the centerline) indicate that a feature increases the model’s output, while negative values (left of the centerline) suggest a decrease. The color depicts the actual value of the feature for the given instance, enabling a comprehensive view of feature influence across the dataset.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the Random Forest Regressor and visualization libraries</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Train a Random Forest model</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>rf_model <span class="op">=</span> RandomForestRegressor(n_estimators<span class="op">=</span><span class="dv">100</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>rf_model.fit(X, y)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract feature importances</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>feature_importances <span class="op">=</span> rf_model.feature_importances_</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame for visualization</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>importance_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Feature'</span>: feature_columns,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Importance'</span>: feature_importances</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>}).sort_values(by<span class="op">=</span><span class="st">'Importance'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a horizontal bar chart for feature importances</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>plt.barh(importance_df[<span class="st">'Feature'</span>], importance_df[<span class="st">'Importance'</span>], color<span class="op">=</span><span class="st">'dodgerblue'</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Importance'</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">''</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Random Forest Feature Importance'</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">13</span>)  <span class="co"># Increase the font size of the x-axis tick labels</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">14</span>)  <span class="co"># Increase the font size of the x-axis tick labels</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the figure before showing it</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'random_forest_importance_plot.png'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># 'bbox_inches' ensures the entire plot is saved</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>feature_importances</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>array([0.71850575, 0.10367982, 0.01655567, 0.07232808, 0.05603188,
+       0.0146824 , 0.0182164 ])</code></pre>
+</div>
+</div>
+<section id="random-forest-feature-importance-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="random-forest-feature-importance-analysis">Random Forest Feature Importance Analysis</h2>
+<p>To gain insights into which exoplanetary features most influence the observed transit depth, a Random Forest Regressor was utilized. Here’s an outline of the procedure:</p>
+<ol type="1">
+<li><p><strong>Model Initialization</strong>: A Random Forest Regressor model was instantiated with 100 trees and a fixed random seed of 42 for reproducibility.</p></li>
+<li><p><strong>Model Training</strong>: The model was trained on the feature set <code>X</code> and target variable <code>y</code>.</p></li>
+<li><p><strong>Feature Importance Extraction</strong>: After training, the importance of each feature was extracted using the <code>feature_importances_</code> attribute of the trained model.</p></li>
+<li><p><strong>Data Preparation for Visualization</strong>: A DataFrame was created to house each feature alongside its respective importance. The features were then sorted in ascending order of importance for better visualization.</p></li>
+<li><p><strong>Visualization</strong>: A horizontal bar chart was plotted to showcase the importance of each feature. The chart offers a clear visual comparison, with the y-axis representing the features and the x-axis indicating their importance. Special attention was paid to font size adjustments for better readability. Furthermore, before displaying the chart, it was saved as a PNG image with high resolution.</p></li>
+</ol>
+<p>The resulting visualization, titled ‘Random Forest Feature Importance’, provides a clear understanding of the relative significance of each feature in predicting the transit depth, as discerned by the Random Forest model.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'PME.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<p><img src="research_statement_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="pme-feature-importance-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="pme-feature-importance-analysis">PME Feature Importance Analysis</h2>
+<p>Using a modeling technique, the impact of different exoplanetary features on the observed transit depth was assessed, and their importance was visualized in the attached figure titled ‘PME Feature Importance’. Here’s a breakdown of the visual representation:</p>
+<ol type="1">
+<li><p><strong>Most Influential Feature</strong>: The <code>planet_radius</code> stands out as the most influential feature with the highest PME (Predictive Modeling Estimate) value. This suggests that the radius of the planet plays a pivotal role in determining the observed transit depth.</p></li>
+<li><p><strong>Other Features</strong>: Logarithmic concentrations of gases, such as <code>log_co2</code>, <code>log_co</code>, <code>log_nh3</code>, <code>log_h2o</code>, and <code>log_ch4</code>, also exhibit varying degrees of importance. Among these, <code>log_co2</code> and <code>log_co</code> are the more significant contributors compared to others.</p></li>
+<li><p><strong>Least Influential Feature</strong>: The <code>planet_temp</code>, representing the temperature of the planet, has the least importance in this analysis, suggesting its minimal role in influencing the transit depth, at least according to the PME metric.</p></li>
+<li><p><strong>Visual Clarity</strong>: The horizontal bar chart offers a lucid comparison of feature importances. Each bar’s length represents the PME value of a feature, providing a direct visual cue to its significance.</p></li>
+<li><p><strong>Interpretation</strong>: This visualization aids in discerning which exoplanetary characteristics are most relevant when predicting the transit depth using the given model. It can guide future analyses by highlighting key features to focus on or, conversely, those that might be less consequential.</p></li>
+</ol>
+<p>By examining the ‘PME Feature Importance’ chart, one gains a deeper understanding of the relative significance of each feature in predicting the transit depth within this specific modeling context.</p>
+</section>
+<section id="uncertainty-quantification-and-feature-reduction-in-pme-feature-importance-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="uncertainty-quantification-and-feature-reduction-in-pme-feature-importance-analysis">Uncertainty Quantification and Feature Reduction in PME Feature Importance Analysis</h2>
+<p>When delving deep into the realms of uncertainty quantification and feature reduction in predictive modeling, it’s crucial to evaluate feature importance metrics critically. The provided PME (Predictive Modeling Estimate) Feature Importance Analysis offers a valuable lens for this task. Below is a nuanced exploration of its significance in the described contexts:</p>
+<section id="uncertainty-quantification" class="level3">
+<h3 class="anchored" data-anchor-id="uncertainty-quantification"><strong>Uncertainty Quantification</strong>:</h3>
+<ol type="1">
+<li><strong>Origin of Uncertainty</strong>:
+<ul>
+<li>In exoplanetary spectral analysis, uncertainty can arise from observational noise, instrumental errors, or intrinsic variability of the observed phenomena. This uncertainty often manifests in the form of error bars in spectra, like the ones shown in transit depth against wavelengths.</li>
+</ul></li>
+<li><strong>Feature Impact on Uncertainty</strong>:
+<ul>
+<li>The degree of influence a feature has on the predicted outcome can be a proxy for how that feature might contribute to the overall predictive uncertainty. If a feature like <code>planet_radius</code> has a high PME value, it might be a critical determinant of transit depth. Any uncertainty in measuring or estimating the <code>planet_radius</code> could propagate and significantly affect the prediction’s reliability.</li>
+</ul></li>
+<li><strong>PME as a Measure of Stochastic Uncertainty</strong>:
+<ul>
+<li>The PME values themselves might be obtained by analyzing a model’s sensitivity to perturbations in input features. A high PME value indicates that slight changes in the feature can lead to notable changes in the output, thereby implying a greater inherent stochastic uncertainty tied to that feature.</li>
+</ul></li>
+</ol>
+</section>
+<section id="feature-reduction" class="level3">
+<h3 class="anchored" data-anchor-id="feature-reduction"><strong>Feature Reduction</strong>:</h3>
+<ol type="1">
+<li><strong>Identifying Critical Features</strong>:
+<ul>
+<li>When dealing with a multitude of features, not all may be equally relevant. The PME analysis provides a hierarchy of feature importance. In this case, while <code>planet_radius</code> emerges as crucial, <code>planet_temp</code> appears less consequential. This differentiation is fundamental for feature reduction, guiding us on which features to prioritize in modeling.</li>
+</ul></li>
+<li><strong>Reducing Dimensionality &amp; Complexity</strong>:
+<ul>
+<li>In data-driven modeling, especially with limited data points, overfitting is a genuine concern. By understanding which features significantly influence the predictions (like <code>planet_radius</code> or <code>log_co2</code>), one can potentially reduce the model’s complexity and the risk of overfitting by focusing only on these paramount features.</li>
+</ul></li>
+<li><strong>Informing Experimental Design</strong>:
+<ul>
+<li>If further observational or experimental data is required, knowing feature importances can guide where resources are channeled. For instance, more precise measurements might be sought for features with high PME values, as their accurate estimation is vital for reliable predictions.</li>
+</ul></li>
+<li><strong>Trade-off with Predictive Performance</strong>:
+<ul>
+<li>It’s essential to understand that while feature reduction can simplify models and make them more interpretable, there’s always a trade-off with predictive performance. Removing features based on their PME values should be done judiciously, ensuring that the model’s predictive capability isn’t unduly compromised.</li>
+</ul></li>
+</ol>
+<p>In summary, the ‘PME Feature Importance’ chart isn’t merely a representation of feature significance but serves as a cornerstone for rigorous analytical decisions in uncertainty quantification and feature reduction. Analyzing such importance metrics within the broader context of the problem at hand ensures that models are both robust and interpretable, catering effectively to the dual objectives of predictive accuracy and analytical clarity.</p>
+</section>
+<section id="weighted-principal-component-analysis-pca-on-exoplanet-data" class="level3">
+<h3 class="anchored" data-anchor-id="weighted-principal-component-analysis-pca-on-exoplanet-data">Weighted Principal Component Analysis (PCA) on Exoplanet Data</h3>
+<section id="conceptual-overview" class="level4">
+<h4 class="anchored" data-anchor-id="conceptual-overview"><strong>Conceptual Overview</strong>:</h4>
+<p>PCA is a method used to emphasize variation and capture strong patterns in a dataset. The “weighted PCA” approach fine-tunes this by considering the importance of different features, effectively giving more attention to features deemed vital.</p>
+</section>
+<section id="detailed-breakdown" class="level4">
+<h4 class="anchored" data-anchor-id="detailed-breakdown"><strong>Detailed Breakdown</strong>:</h4>
+<ol type="1">
+<li><strong>Standardization</strong>:
+<ul>
+<li>Before applying PCA, the dataset is standardized to give each feature a mean of 0 and a variance of 1. This is essential because PCA is influenced by the scale of the data.</li>
+</ul></li>
+<li><strong>Weighted Features</strong>:
+<ul>
+<li>Features are weighted according to their importance, as identified by the Random Forest model. Taking the square root of the weights ensures proper scaling during matrix multiplication in PCA.</li>
+</ul></li>
+<li><strong>PCA Application</strong>:
+<ul>
+<li>PCA projects the data into a new space defined by its principal components. The first two components often hold most of the dataset’s variance, making them crucial for visualization.</li>
+</ul></li>
+<li><strong>Visualization</strong>:
+<ul>
+<li>The scatter plot visualizes the data in the space of the first two principal components. The color indicates <code>Transit Depth (x1)</code>, shedding light on how this parameter varies across the main patterns in the data.</li>
+</ul></li>
+<li><strong>Explained Variance</strong>:
+<ul>
+<li>This provides an understanding of how much original variance the first two components capture. A high percentage indicates that the PCA representation retains much of the data’s original structure.</li>
+</ul></li>
+</ol>
+</section>
+<section id="significance" class="level4">
+<h4 class="anchored" data-anchor-id="significance"><strong>Significance</strong>:</h4>
+<ol type="1">
+<li><strong>Data Compression</strong>:
+<ul>
+<li>PCA offers a simplified yet rich representation of the data, which can be invaluable for visualization and pattern recognition.</li>
+</ul></li>
+<li><strong>Feature Emphasis</strong>:
+<ul>
+<li>Using feature importances ensures the PCA representation highlights the most critical patterns related to influential features.</li>
+</ul></li>
+<li><strong>Framework for Further Exploration</strong>:
+<ul>
+<li>Observing patterns or groupings in the PCA plot can guide subsequent investigations, pinpointing areas of interest or potential clusters.</li>
+</ul></li>
+<li><strong>Efficient Data Overview</strong>:
+<ul>
+<li>The visualization provides a comprehensive but digestible overview of the data, suitable for a wide range of audiences.</li>
+</ul></li>
+</ol>
+<p>In essence, weighted PCA melds the dimensionality reduction capabilities of PCA with the interpretative power of feature importances, offering a profound view into the dataset’s intricate structures and relationships.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize the feature matrix</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> StandardScaler().fit_transform(X)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiply each feature by its square root of importance weight for weighted PCA</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># The square root is used because each feature contributes to both rows and columns in the dot product calculation</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>X_weighted <span class="op">=</span> X_scaled <span class="op">*</span> np.sqrt(feature_importances)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform PCA on the weighted data</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>X_pca <span class="op">=</span> pca.fit_transform(X_weighted)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the first two principal components</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_pca[:, <span class="dv">0</span>], X_pca[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span><span class="st">'viridis'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>, s<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>plt.colorbar().set_label(<span class="st">'Transit Depth (x1)'</span>, rotation<span class="op">=</span><span class="dv">270</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Weighted Principal Component 1'</span>)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Weighted Principal Component 2'</span>)</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Weighted PCA: First Two Principal Components'</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance explained by the first two principal components</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>variance_explained <span class="op">=</span> pca.explained_variance_ratio_</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>variance_explained</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>array([0.71985328, 0.10370239])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your data initialization (this part is assumed, as you haven't provided it in the original code)</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># X, y, feature_importances = ...</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize the feature matrix</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> StandardScaler().fit_transform(X)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiply each feature by its square root of importance weight for weighted PCA</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>X_weighted <span class="op">=</span> X_scaled <span class="op">*</span> np.sqrt(feature_importances)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform PCA on the weighted data with three components</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>X_pca <span class="op">=</span> pca.fit_transform(X_weighted)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the first three principal components</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>scatter <span class="op">=</span> ax.scatter(X_pca[:, <span class="dv">0</span>], X_pca[:, <span class="dv">1</span>], X_pca[:, <span class="dv">2</span>], c<span class="op">=</span>y, cmap<span class="op">=</span><span class="st">'viridis'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>, s<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>plt.colorbar(scatter, ax<span class="op">=</span>ax, pad<span class="op">=</span><span class="fl">0.2</span>).set_label(<span class="st">'Transit Depth (x1)'</span>, rotation<span class="op">=</span><span class="dv">270</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Weighted Principal Component 1'</span>)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Weighted Principal Component 2'</span>)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'Weighted Principal Component 3'</span>)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Weighted PCA: First Three Principal Components'</span>)</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance explained by the first three principal components</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>variance_explained <span class="op">=</span> pca.explained_variance_ratio_</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>variance_explained</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>array([0.71985328, 0.10370239, 0.07160805])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># side by side</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Your data initialization (this part is assumed, as you haven't provided it in the original code)</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># X, y, feature_importances = ...</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize the feature matrix</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> StandardScaler().fit_transform(X)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiply each feature by its square root of importance weight for weighted PCA</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>X_weighted <span class="op">=</span> X_scaled <span class="op">*</span> np.sqrt(feature_importances)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a combined figure with subplots</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">7</span>))</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform PCA on the weighted data with two components and plot</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>pca2 <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>X_pca2 <span class="op">=</span> pca2.fit_transform(X_weighted)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>scatter_2d <span class="op">=</span> axes[<span class="dv">0</span>].scatter(X_pca2[:, <span class="dv">0</span>], X_pca2[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span><span class="st">'viridis'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>, s<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>fig.colorbar(scatter_2d, ax<span class="op">=</span>axes[<span class="dv">0</span>], orientation<span class="op">=</span><span class="st">'vertical'</span>).set_label(<span class="st">'Transit Depth (x1)'</span>, rotation<span class="op">=</span><span class="dv">270</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">'Weighted Principal Component 1'</span>)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">'Weighted Principal Component 2'</span>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">'Weighted PCA: First Two Principal Components'</span>)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform PCA on the weighted data with three components and plot</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>pca3 <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>X_pca3 <span class="op">=</span> pca3.fit_transform(X_weighted)</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>ax3d <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>scatter_3d <span class="op">=</span> ax3d.scatter(X_pca3[:, <span class="dv">0</span>], X_pca3[:, <span class="dv">1</span>], X_pca3[:, <span class="dv">2</span>], c<span class="op">=</span>y, cmap<span class="op">=</span><span class="st">'viridis'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>, s<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>fig.colorbar(scatter_3d, ax<span class="op">=</span>ax3d, pad<span class="op">=</span><span class="fl">0.2</span>).set_label(<span class="st">'Transit Depth (x1)'</span>, rotation<span class="op">=</span><span class="dv">270</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>ax3d.set_xlabel(<span class="st">'Weighted Principal Component 1'</span>)</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>ax3d.set_ylabel(<span class="st">'Weighted Principal Component 2'</span>)</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>ax3d.set_zlabel(<span class="st">'Weighted Principal Component 3'</span>)</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>ax3d.set_title(<span class="st">'Weighted PCA: First Three Principal Components'</span>)</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the combined plot</span></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'wPCA_2D_3D.png'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># 'bbox_inches' ensures the entire plot is saved</span></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your data initialization (this part is assumed, as you haven't provided it in the original code)</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># df, feature_columns, transit_depth_column = ...</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Reconstruct the approximate original data using the first three principal components</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>reconstructed_data <span class="op">=</span> np.dot(X_pca, pca.components_[:<span class="dv">3</span>, :]) <span class="op">+</span> np.mean(X_scaled, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame for the reconstructed data</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>reconstructed_df <span class="op">=</span> pd.DataFrame(reconstructed_data, columns<span class="op">=</span>feature_columns)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the approximate original histograms</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="bu">len</span>(feature_columns) <span class="op">+</span> <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">4</span>))  <span class="co"># Adjusted for the number of features</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(feature_columns):</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    sns.histplot(reconstructed_df[col], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[i], color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    axes[i].set_title(<span class="ss">f'Approx of </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Add visualization for actual transit depth (since it was not part of the PCA)</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[transit_depth_column], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>axes[<span class="op">-</span><span class="dv">1</span>].set_title(<span class="ss">f'Actual </span><span class="sc">{</span>transit_depth_column<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">8</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">8</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Original Data</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(feature_columns):</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    sns.histplot(df[col], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>, i])</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>, i].set_title(<span class="ss">f'</span><span class="sc">{</span>col<span class="sc">}</span><span class="ch">\n</span><span class="ss">Mean: </span><span class="sc">{</span>feature_mean[col]<span class="sc">:.2f}</span><span class="ch">\n</span><span class="ss">Variance: </span><span class="sc">{</span>feature_variance[col]<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[transit_depth_column], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>].set_title(<span class="ss">f'</span><span class="sc">{</span>transit_depth_column<span class="sc">}</span><span class="ch">\n</span><span class="ss">Mean: </span><span class="sc">{</span>transit_depth_mean<span class="sc">:.2f}</span><span class="ch">\n</span><span class="ss">Variance: </span><span class="sc">{</span>transit_depth_variance<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Reconstructed Data</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(feature_columns):</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    sns.histplot(reconstructed_df[col], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>, i], color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>, i].set_title(<span class="ss">f'Surrogate of </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[transit_depth_column], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>].set_title(<span class="ss">f'Actual </span><span class="sc">{</span>transit_depth_column<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming data initialization and feature_importances, feature_columns, and transit_depth_column definitions exist</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize the feature matrix</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> StandardScaler().fit_transform(X)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiply each feature by its square root of importance weight for weighted PCA</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>X_weighted <span class="op">=</span> X_scaled <span class="op">*</span> np.sqrt(feature_importances)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the figure and axes</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="bu">len</span>(feature_columns) <span class="op">+</span> <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">12</span>))</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Original Data histograms</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(feature_columns):</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    sns.histplot(df[col], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>, i])</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>, i].set_title(<span class="ss">f'Original </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[transit_depth_column], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>].set_title(<span class="ss">f'Original </span><span class="sc">{</span>transit_depth_column<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Reconstruction using 2 PCs</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>pca2 <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>X_pca2 <span class="op">=</span> pca2.fit_transform(X_weighted)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>reconstructed_data_2PCs <span class="op">=</span> np.dot(X_pca2, pca2.components_[:<span class="dv">2</span>, :]) <span class="op">+</span> np.mean(X_scaled, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>reconstructed_df_2PCs <span class="op">=</span> pd.DataFrame(reconstructed_data_2PCs, columns<span class="op">=</span>feature_columns)</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(feature_columns):</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    sns.histplot(reconstructed_df_2PCs[col], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>, i], color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>, i].set_title(<span class="ss">f'2 PCs of </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[transit_depth_column], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>].set_title(<span class="ss">f'Original </span><span class="sc">{</span>transit_depth_column<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Reconstruction using 3 PCs</span></span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>pca3 <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>X_pca3 <span class="op">=</span> pca3.fit_transform(X_weighted)</span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>reconstructed_data_3PCs <span class="op">=</span> np.dot(X_pca3, pca3.components_[:<span class="dv">3</span>, :]) <span class="op">+</span> np.mean(X_scaled, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>reconstructed_df_3PCs <span class="op">=</span> pd.DataFrame(reconstructed_data_3PCs, columns<span class="op">=</span>feature_columns)</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(feature_columns):</span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>    sns.histplot(reconstructed_df_3PCs[col], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">2</span>, i], color<span class="op">=</span><span class="st">'purple'</span>)</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">2</span>, i].set_title(<span class="ss">f'3 PCs of </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[transit_depth_column], bins<span class="op">=</span><span class="dv">20</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>axes[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>].set_title(<span class="ss">f'Original </span><span class="sc">{</span>transit_depth_column<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'wPCA_combined_plot.png'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">500</span>)  <span class="co"># 'bbox_inches' ensures the entire plot is saved</span></span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="reconstruction-of-exoplanet-data-using-principal-component-analysis-pca" class="level3">
+<h3 class="anchored" data-anchor-id="reconstruction-of-exoplanet-data-using-principal-component-analysis-pca">Reconstruction of Exoplanet Data Using Principal Component Analysis (PCA)</h3>
+<p>The code segment aims to reconstruct exoplanet data using different numbers of principal components (PCs) from PCA, offering insights into how much information retention occurs as we vary the number of PCs.</p>
+<section id="data-standardization" class="level4">
+<h4 class="anchored" data-anchor-id="data-standardization"><strong>Data Standardization</strong>:</h4>
+<ul>
+<li>The features undergo standardization, ensuring each feature has a mean of 0 and variance of 1. This normalization is crucial for PCA, as the algorithm is sensitive to varying scales across features.</li>
+</ul>
+</section>
+<section id="weighted-features" class="level4">
+<h4 class="anchored" data-anchor-id="weighted-features"><strong>Weighted Features</strong>:</h4>
+<ul>
+<li>Features are adjusted based on their significance as ascertained by a prior model, specifically the Random Forest. Weighting the features adjusts the emphasis the PCA places on each feature during the dimensionality reduction process.</li>
+</ul>
+</section>
+<section id="data-reconstruction" class="level4">
+<h4 class="anchored" data-anchor-id="data-reconstruction"><strong>Data Reconstruction</strong>:</h4>
+<ul>
+<li>After performing PCA, the algorithm seeks to transform the reduced data back to the original high-dimensional space. This “reconstructed” data is an approximation of the original but is built using fewer dimensions.</li>
+</ul>
+</section>
+<section id="visualization-of-reconstructions" class="level4">
+<h4 class="anchored" data-anchor-id="visualization-of-reconstructions"><strong>Visualization of Reconstructions</strong>:</h4>
+<ol type="1">
+<li><strong>Original Data Histograms</strong>:
+<ul>
+<li>The initial histograms show the distributions of the original features and the transit depth.</li>
+</ul></li>
+<li><strong>Reconstruction Using 2 Principal Components</strong>:
+<ul>
+<li>Using only the first two PCs, the data is reconstructed and its histograms visualized. This illustrates the patterns and distributions captured when only the first two components are considered.</li>
+</ul></li>
+<li><strong>Reconstruction Using 3 Principal Components</strong>:
+<ul>
+<li>An analogous reconstruction is done with three PCs. The addition of a third dimension might capture more nuanced variations in the data.</li>
+</ul></li>
+</ol>
+</section>
+<section id="significance-1" class="level4">
+<h4 class="anchored" data-anchor-id="significance-1"><strong>Significance</strong>:</h4>
+<ol type="1">
+<li><strong>Data Compression vs.&nbsp;Retention</strong>:
+<ul>
+<li>The visualizations enable us to compare the reconstructions against the original data. We discern how much information is retained and what is lost as we reduce dimensions.</li>
+</ul></li>
+<li><strong>Guide for Dimensionality Decision</strong>:
+<ul>
+<li>By juxtaposing the original with the reconstructions, we gain insights into the optimal number of PCs to use for specific tasks, striking a balance between compression and information retention.</li>
+</ul></li>
+<li><strong>Empirical Understanding</strong>:
+<ul>
+<li>These histograms and visual representations offer a tangible way to grasp the abstract notion of dimensionality reduction. They elucidate how PCA captures the essence of the data while diminishing dimensions.</li>
+</ul></li>
+</ol>
+<p>In conclusion, this analysis, coupled with the visualizations, equips us with a robust understanding of how PCA reconstructs data using varying numbers of components. It underscores the trade-offs involved and the implications of choosing specific dimensionality levels in data-driven tasks.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.gridspec <span class="im">as</span> gridspec</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load images</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>img_shap <span class="op">=</span> mpimg.imread(<span class="st">'shapley.png'</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>img_rf <span class="op">=</span> mpimg.imread(<span class="st">'random_forest_importance_plot.png'</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>img_pme <span class="op">=</span> mpimg.imread(<span class="st">'PME.png'</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a grid for the subplots</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>fig_combined <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">12</span>))</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">2</span>, width_ratios<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Display SHAP plot</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>ax0 <span class="op">=</span> plt.subplot(gs[<span class="dv">0</span>])</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>ax0.imshow(img_shap)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>ax0.axis(<span class="st">'off'</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Display RF Importance plot</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> plt.subplot(gs[<span class="dv">1</span>])</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>ax1.imshow(img_rf)</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>ax1.axis(<span class="st">'off'</span>)</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Display PME image in the middle of the 2nd row</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> plt.subplot(gs[<span class="dv">2</span>:<span class="dv">4</span>])  <span class="co"># This makes the PME plot span both columns on the second row</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>ax2.imshow(img_pme)</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>ax2.axis(<span class="st">'off'</span>)</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'sensitivity_combined_plot.png'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)  <span class="co"># 'bbox_inches' ensures the entire plot is saved</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="research_statement_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>This code snippet consolidates and displays three distinct plots—SHAP values, Random Forest Feature Importance, and PME Feature Importance—into a single visualization. The images are loaded and arranged in a 2x2 grid, with the SHAP and Random Forest plots on the top row, and the PME plot spanning both columns on the bottom row. After layout adjustments, the combined visualization is saved as a high-resolution PNG image titled ‘sensitivity_combined_plot.png’ and then displayed.</p>
+</section>
+</section>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">Reference</h3>
+<p>Changeat, Q., &amp; Yip, K. H. (2023). ESA-Ariel Data Challenge NeurIPS 2022: Introduction to exo-atmospheric studies and presentation of the Atmospheric Big Challenge (ABC) Database. <em>arXiv preprint arXiv:2206.14633</em>.</p>
+<p>Herin, M., Il Idrissi, M., Chabridon, V., &amp; Iooss, B. (2022). Proportional marginal effects for global sensitivity analysis. arXiv preprint arXiv:2210.13065.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>jupyter nbconvert research_statement.ipynb <span class="op">--</span>to markdown <span class="op">--</span>NbConvertApp.output_files_dir<span class="op">=</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[NbConvertApp] Converting notebook research_statement.ipynb to markdown
+[NbConvertApp] Support files will be in ./
+[NbConvertApp] Writing 36217 bytes to research_statement.md</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat research_statement.md <span class="op">|</span> tee <span class="op">-</span>a index.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>```python
+# Import required libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+The figure below showcases a spectrum integral to exoplanet detection, charting the transit depth against the wavelength in microns. Every observation point in the spectrum carries an inherent uncertainty, denoted by the vertical error bars. To decode and potentially minimize this uncertainty, it's pivotal to fathom how features like `planet radius`, `planet temperature`, and the logarithmic concentrations of `H₂O`, `CO₂`, `CO`, `CH₄`, and `NH₃` influence the transit depth. Leveraging interpretative tools like SHAP can provide insights into how these exoplanetary features impact the observed transit depth, refining our understanding and accuracy in exoplanet spectral analysis.
+
+
+```python
+from IPython.display import Image
+Image(filename='my_spectrum.png')
+```
+
+
+
+
+    
+![png](./research_statement_2_0.png)
+    
+
+
+
+
+```python
+# Load the CSV file into a Pandas DataFrame
+df = pd.read_csv("small_astro.csv")
+```
+
+
+```python
+df_backup = df.copy()
+df_backup.head(10)
+```
+
+
+
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Unnamed: 0&lt;/th&gt;
+      &lt;th&gt;planet_radius&lt;/th&gt;
+      &lt;th&gt;planet_temp&lt;/th&gt;
+      &lt;th&gt;log_h2o&lt;/th&gt;
+      &lt;th&gt;log_co2&lt;/th&gt;
+      &lt;th&gt;log_co&lt;/th&gt;
+      &lt;th&gt;log_ch4&lt;/th&gt;
+      &lt;th&gt;log_nh3&lt;/th&gt;
+      &lt;th&gt;x1&lt;/th&gt;
+      &lt;th&gt;x2&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;x43&lt;/th&gt;
+      &lt;th&gt;x44&lt;/th&gt;
+      &lt;th&gt;x45&lt;/th&gt;
+      &lt;th&gt;x46&lt;/th&gt;
+      &lt;th&gt;x47&lt;/th&gt;
+      &lt;th&gt;x48&lt;/th&gt;
+      &lt;th&gt;x49&lt;/th&gt;
+      &lt;th&gt;x50&lt;/th&gt;
+      &lt;th&gt;x51&lt;/th&gt;
+      &lt;th&gt;x52&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0.559620&lt;/td&gt;
+      &lt;td&gt;863.394770&lt;/td&gt;
+      &lt;td&gt;-8.865868&lt;/td&gt;
+      &lt;td&gt;-6.700707&lt;/td&gt;
+      &lt;td&gt;-5.557561&lt;/td&gt;
+      &lt;td&gt;-8.957615&lt;/td&gt;
+      &lt;td&gt;-3.097540&lt;/td&gt;
+      &lt;td&gt;0.003836&lt;/td&gt;
+      &lt;td&gt;0.003834&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.003938&lt;/td&gt;
+      &lt;td&gt;0.003941&lt;/td&gt;
+      &lt;td&gt;0.003903&lt;/td&gt;
+      &lt;td&gt;0.003931&lt;/td&gt;
+      &lt;td&gt;0.003983&lt;/td&gt;
+      &lt;td&gt;0.004019&lt;/td&gt;
+      &lt;td&gt;0.004046&lt;/td&gt;
+      &lt;td&gt;0.004072&lt;/td&gt;
+      &lt;td&gt;0.004054&lt;/td&gt;
+      &lt;td&gt;0.004056&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1.118308&lt;/td&gt;
+      &lt;td&gt;1201.700465&lt;/td&gt;
+      &lt;td&gt;-4.510258&lt;/td&gt;
+      &lt;td&gt;-8.228966&lt;/td&gt;
+      &lt;td&gt;-3.565427&lt;/td&gt;
+      &lt;td&gt;-7.807424&lt;/td&gt;
+      &lt;td&gt;-3.633658&lt;/td&gt;
+      &lt;td&gt;0.015389&lt;/td&gt;
+      &lt;td&gt;0.015148&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.015450&lt;/td&gt;
+      &lt;td&gt;0.015447&lt;/td&gt;
+      &lt;td&gt;0.015461&lt;/td&gt;
+      &lt;td&gt;0.015765&lt;/td&gt;
+      &lt;td&gt;0.016099&lt;/td&gt;
+      &lt;td&gt;0.016376&lt;/td&gt;
+      &lt;td&gt;0.016549&lt;/td&gt;
+      &lt;td&gt;0.016838&lt;/td&gt;
+      &lt;td&gt;0.016781&lt;/td&gt;
+      &lt;td&gt;0.016894&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;0.400881&lt;/td&gt;
+      &lt;td&gt;1556.096477&lt;/td&gt;
+      &lt;td&gt;-7.225472&lt;/td&gt;
+      &lt;td&gt;-6.931472&lt;/td&gt;
+      &lt;td&gt;-3.081975&lt;/td&gt;
+      &lt;td&gt;-8.567854&lt;/td&gt;
+      &lt;td&gt;-5.378472&lt;/td&gt;
+      &lt;td&gt;0.002089&lt;/td&gt;
+      &lt;td&gt;0.002073&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.001989&lt;/td&gt;
+      &lt;td&gt;0.002168&lt;/td&gt;
+      &lt;td&gt;0.002176&lt;/td&gt;
+      &lt;td&gt;0.002123&lt;/td&gt;
+      &lt;td&gt;0.002079&lt;/td&gt;
+      &lt;td&gt;0.002081&lt;/td&gt;
+      &lt;td&gt;0.002106&lt;/td&gt;
+      &lt;td&gt;0.002167&lt;/td&gt;
+      &lt;td&gt;0.002149&lt;/td&gt;
+      &lt;td&gt;0.002185&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;0.345974&lt;/td&gt;
+      &lt;td&gt;1268.624884&lt;/td&gt;
+      &lt;td&gt;-7.461157&lt;/td&gt;
+      &lt;td&gt;-5.853334&lt;/td&gt;
+      &lt;td&gt;-3.044711&lt;/td&gt;
+      &lt;td&gt;-5.149378&lt;/td&gt;
+      &lt;td&gt;-3.815568&lt;/td&gt;
+      &lt;td&gt;0.002523&lt;/td&gt;
+      &lt;td&gt;0.002392&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.002745&lt;/td&gt;
+      &lt;td&gt;0.003947&lt;/td&gt;
+      &lt;td&gt;0.004296&lt;/td&gt;
+      &lt;td&gt;0.003528&lt;/td&gt;
+      &lt;td&gt;0.003352&lt;/td&gt;
+      &lt;td&gt;0.003629&lt;/td&gt;
+      &lt;td&gt;0.003929&lt;/td&gt;
+      &lt;td&gt;0.004363&lt;/td&gt;
+      &lt;td&gt;0.004216&lt;/td&gt;
+      &lt;td&gt;0.004442&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;0.733184&lt;/td&gt;
+      &lt;td&gt;1707.323564&lt;/td&gt;
+      &lt;td&gt;-4.140844&lt;/td&gt;
+      &lt;td&gt;-7.460278&lt;/td&gt;
+      &lt;td&gt;-3.181793&lt;/td&gt;
+      &lt;td&gt;-5.996593&lt;/td&gt;
+      &lt;td&gt;-4.535345&lt;/td&gt;
+      &lt;td&gt;0.002957&lt;/td&gt;
+      &lt;td&gt;0.002924&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.003402&lt;/td&gt;
+      &lt;td&gt;0.003575&lt;/td&gt;
+      &lt;td&gt;0.003667&lt;/td&gt;
+      &lt;td&gt;0.003740&lt;/td&gt;
+      &lt;td&gt;0.003823&lt;/td&gt;
+      &lt;td&gt;0.003904&lt;/td&gt;
+      &lt;td&gt;0.003897&lt;/td&gt;
+      &lt;td&gt;0.004004&lt;/td&gt;
+      &lt;td&gt;0.004111&lt;/td&gt;
+      &lt;td&gt;0.004121&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;0.161165&lt;/td&gt;
+      &lt;td&gt;620.185809&lt;/td&gt;
+      &lt;td&gt;-4.875000&lt;/td&gt;
+      &lt;td&gt;-5.074766&lt;/td&gt;
+      &lt;td&gt;-3.861240&lt;/td&gt;
+      &lt;td&gt;-5.388011&lt;/td&gt;
+      &lt;td&gt;-8.390503&lt;/td&gt;
+      &lt;td&gt;0.000444&lt;/td&gt;
+      &lt;td&gt;0.000442&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.000432&lt;/td&gt;
+      &lt;td&gt;0.000486&lt;/td&gt;
+      &lt;td&gt;0.000473&lt;/td&gt;
+      &lt;td&gt;0.000462&lt;/td&gt;
+      &lt;td&gt;0.000447&lt;/td&gt;
+      &lt;td&gt;0.000455&lt;/td&gt;
+      &lt;td&gt;0.000455&lt;/td&gt;
+      &lt;td&gt;0.000457&lt;/td&gt;
+      &lt;td&gt;0.000463&lt;/td&gt;
+      &lt;td&gt;0.000474&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;0.194312&lt;/td&gt;
+      &lt;td&gt;900.597575&lt;/td&gt;
+      &lt;td&gt;-8.299899&lt;/td&gt;
+      &lt;td&gt;-6.850709&lt;/td&gt;
+      &lt;td&gt;-4.314491&lt;/td&gt;
+      &lt;td&gt;-3.712038&lt;/td&gt;
+      &lt;td&gt;-3.951455&lt;/td&gt;
+      &lt;td&gt;0.001794&lt;/td&gt;
+      &lt;td&gt;0.001721&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.001048&lt;/td&gt;
+      &lt;td&gt;0.001052&lt;/td&gt;
+      &lt;td&gt;0.000948&lt;/td&gt;
+      &lt;td&gt;0.000976&lt;/td&gt;
+      &lt;td&gt;0.001122&lt;/td&gt;
+      &lt;td&gt;0.001274&lt;/td&gt;
+      &lt;td&gt;0.001395&lt;/td&gt;
+      &lt;td&gt;0.001522&lt;/td&gt;
+      &lt;td&gt;0.001456&lt;/td&gt;
+      &lt;td&gt;0.001823&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;1.132685&lt;/td&gt;
+      &lt;td&gt;1176.443900&lt;/td&gt;
+      &lt;td&gt;-6.765865&lt;/td&gt;
+      &lt;td&gt;-7.398548&lt;/td&gt;
+      &lt;td&gt;-3.378307&lt;/td&gt;
+      &lt;td&gt;-3.763737&lt;/td&gt;
+      &lt;td&gt;-5.881384&lt;/td&gt;
+      &lt;td&gt;0.012950&lt;/td&gt;
+      &lt;td&gt;0.012946&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.014019&lt;/td&gt;
+      &lt;td&gt;0.013871&lt;/td&gt;
+      &lt;td&gt;0.013810&lt;/td&gt;
+      &lt;td&gt;0.013902&lt;/td&gt;
+      &lt;td&gt;0.014024&lt;/td&gt;
+      &lt;td&gt;0.014150&lt;/td&gt;
+      &lt;td&gt;0.014298&lt;/td&gt;
+      &lt;td&gt;0.014392&lt;/td&gt;
+      &lt;td&gt;0.014401&lt;/td&gt;
+      &lt;td&gt;0.015042&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;0.158621&lt;/td&gt;
+      &lt;td&gt;1189.209841&lt;/td&gt;
+      &lt;td&gt;-8.376041&lt;/td&gt;
+      &lt;td&gt;-6.321977&lt;/td&gt;
+      &lt;td&gt;-3.243900&lt;/td&gt;
+      &lt;td&gt;-8.711851&lt;/td&gt;
+      &lt;td&gt;-3.449195&lt;/td&gt;
+      &lt;td&gt;0.000444&lt;/td&gt;
+      &lt;td&gt;0.000445&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.000562&lt;/td&gt;
+      &lt;td&gt;0.000595&lt;/td&gt;
+      &lt;td&gt;0.000571&lt;/td&gt;
+      &lt;td&gt;0.000590&lt;/td&gt;
+      &lt;td&gt;0.000628&lt;/td&gt;
+      &lt;td&gt;0.000663&lt;/td&gt;
+      &lt;td&gt;0.000692&lt;/td&gt;
+      &lt;td&gt;0.000734&lt;/td&gt;
+      &lt;td&gt;0.000718&lt;/td&gt;
+      &lt;td&gt;0.000736&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;0.660642&lt;/td&gt;
+      &lt;td&gt;528.023669&lt;/td&gt;
+      &lt;td&gt;-3.804286&lt;/td&gt;
+      &lt;td&gt;-8.919378&lt;/td&gt;
+      &lt;td&gt;-4.686964&lt;/td&gt;
+      &lt;td&gt;-8.150277&lt;/td&gt;
+      &lt;td&gt;-3.068319&lt;/td&gt;
+      &lt;td&gt;0.008997&lt;/td&gt;
+      &lt;td&gt;0.009035&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;0.009435&lt;/td&gt;
+      &lt;td&gt;0.009375&lt;/td&gt;
+      &lt;td&gt;0.009315&lt;/td&gt;
+      &lt;td&gt;0.009357&lt;/td&gt;
+      &lt;td&gt;0.009563&lt;/td&gt;
+      &lt;td&gt;0.009739&lt;/td&gt;
+      &lt;td&gt;0.009821&lt;/td&gt;
+      &lt;td&gt;0.009890&lt;/td&gt;
+      &lt;td&gt;0.009819&lt;/td&gt;
+      &lt;td&gt;0.009734&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;10 rows × 60 columns&lt;/p&gt;
+&lt;/div&gt;
+
+
+
+
+```python
+# Columns of interest for planetary and chemical properties and transit depth
+feature_columns = df.columns[1:8]
+transit_depth_column = 'x1' # pick the first wavelength
+
+# Calculate mean and variance for features and transit depth
+feature_mean = df[feature_columns].mean()
+feature_variance = df[feature_columns].var()
+transit_depth_mean = df[transit_depth_column].mean()
+transit_depth_variance = df[transit_depth_column].var()
+
+# Visualize the distributions
+fig, axes = plt.subplots(1, 8, figsize=(18, 4))
+for i, col in enumerate(feature_columns):
+    sns.histplot(df[col], bins=20, kde=True, ax=axes[i])
+    axes[i].set_title(f'{col}\nMean: {feature_mean[col]:.2f}\nVariance: {feature_variance[col]:.2f}')
+
+# Add visualization for transit depth
+sns.histplot(df[transit_depth_column], bins=20, kde=True, ax=axes[-1])
+axes[-1].set_title(f'{transit_depth_column}\nMean: {transit_depth_mean:.2f}\nVariance: {transit_depth_variance:.2f}')
+
+plt.tight_layout()
+plt.show()
+
+feature_mean, feature_variance, transit_depth_mean, transit_depth_variance
+```
+
+
+    
+![png](./research_statement_5_0.png)
+    
+
+
+
+
+
+    (planet_radius       0.703714
+     planet_temp      1073.229674
+     log_h2o            -5.934889
+     log_co2            -6.873009
+     log_co             -4.497141
+     log_ch4            -5.799850
+     log_nh3            -6.051791
+     dtype: float64,
+     planet_radius         0.198990
+     planet_temp      154495.743225
+     log_h2o               3.130868
+     log_co2               1.649658
+     log_co                0.738255
+     log_ch4               3.208283
+     log_nh3               3.050545
+     dtype: float64,
+     0.009442470522591322,
+     0.00016172106267489707)
+
+
+
+## Exoplanet Feature Distributions
+
+The provided visualizations and statistics shed light on the distribution of various exoplanetary features and the observed transit depth at the `x1` wavelength.
+
+- **Planet Radius**: This feature, with a mean value of approximately 0.7037 and variance of 0.1989, mostly lies between 0.5 and 1.5 as depicted in its histogram.
+  
+- **Planet Temperature**: Exhibiting a wider spread, the temperature has a mean of approximately 1073.29 K and variance of 154495.74 K².
+
+- **Logarithmic Concentrations**:
+  - **H₂O**: Mean concentration of -5.93 with a variance of 3.13.
+  - **CO₂**: Mean concentration of -6.87 with a variance of 1.65.
+  - **CO**: Mean concentration of -4.50 with a variance of 0.74.
+  - **CH₄**: Mean concentration of -5.80 with a variance of 3.21.
+  - **NH₃**: Mean concentration of -6.05 with a variance of 3.05.
+
+- **Transit Depth at x1 Wavelength**: This depth, crucial for exoplanet detection, has an almost singular value near 0, with a mean of approximately 0.0094 and a negligible variance of 0.00006.
+
+These distributions and their accompanying statistics offer invaluable insights into the data's nature and its inherent variability, essential for accurate spectral analysis and interpretation.
+
+
+
+```python
+# Import required libraries for modeling and SHAP values
+import xgboost as xgb
+import shap
+
+# Prepare the feature matrix (X) and the target vector (y)
+X = df.iloc[:, 1:8]
+y = df['x1']
+
+# Train an XGBoost model
+model = xgb.XGBRegressor(objective ='reg:squarederror')
+model.fit(X, y)
+
+# Initialize the SHAP explainer
+explainer = shap.Explainer(model)
+
+# Calculate SHAP values
+shap_values = explainer(X)
+
+# Summary plot for SHAP values
+shap.summary_plot(shap_values, X, title='Shapley Feature Importance')
+
+```
+
+    Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)
+
+
+
+    
+![png](./research_statement_7_1.png)
+    
+
+
+SHAP (SHapley Additive exPlanations) values stem from cooperative game theory and provide a way to interpret machine learning model predictions. Each feature in a model is analogous to a player in a game, and the contribution of each feature to a prediction is like the payout a player receives in the game. In SHAP, we calculate the value of each feature by considering all possible combinations (coalitions) of features, assessing the change in prediction with and without that feature. The resulting value, the Shapley value, represents the average contribution of a feature to all possible predictions.
+
+The summary plot visualizes these values. Each dot represents a SHAP value for a specific instance of a feature; positive values (right of the centerline) indicate that a feature increases the model's output, while negative values (left of the centerline) suggest a decrease. The color depicts the actual value of the feature for the given instance, enabling a comprehensive view of feature influence across the dataset.
+
+
+
+```python
+# Import the Random Forest Regressor and visualization libraries
+from sklearn.ensemble import RandomForestRegressor
+
+# Train a Random Forest model
+rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+rf_model.fit(X, y)
+
+# Extract feature importances
+feature_importances = rf_model.feature_importances_
+
+# Create a DataFrame for visualization
+importance_df = pd.DataFrame({
+    'Feature': feature_columns,
+    'Importance': feature_importances
+}).sort_values(by='Importance', ascending=True)
+
+# Create a horizontal bar chart for feature importances
+plt.figure(figsize=(10, 6))
+plt.barh(importance_df['Feature'], importance_df['Importance'], color='dodgerblue')
+plt.xlabel('Importance')
+plt.ylabel('')
+plt.title('Random Forest Feature Importance')
+plt.xticks(fontsize=13)  # Increase the font size of the x-axis tick labels
+plt.yticks(fontsize=14)  # Increase the font size of the x-axis tick labels
+# Save the figure before showing it
+plt.savefig('random_forest_importance_plot.png', bbox_inches='tight', dpi=300)  # 'bbox_inches' ensures the entire plot is saved
+
+plt.show()
+
+
+
+feature_importances
+```
+
+
+    
+![png](./research_statement_9_0.png)
+    
+
+
+
+
+
+    array([0.71850575, 0.10367982, 0.01655567, 0.07232808, 0.05603188,
+           0.0146824 , 0.0182164 ])
+
+
+
+## Random Forest Feature Importance Analysis
+
+To gain insights into which exoplanetary features most influence the observed transit depth, a Random Forest Regressor was utilized. Here's an outline of the procedure:
+
+1. **Model Initialization**: A Random Forest Regressor model was instantiated with 100 trees and a fixed random seed of 42 for reproducibility.
+
+2. **Model Training**: The model was trained on the feature set `X` and target variable `y`.
+
+3. **Feature Importance Extraction**: After training, the importance of each feature was extracted using the `feature_importances_` attribute of the trained model.
+
+4. **Data Preparation for Visualization**: A DataFrame was created to house each feature alongside its respective importance. The features were then sorted in ascending order of importance for better visualization.
+
+5. **Visualization**: A horizontal bar chart was plotted to showcase the importance of each feature. The chart offers a clear visual comparison, with the y-axis representing the features and the x-axis indicating their importance. Special attention was paid to font size adjustments for better readability. Furthermore, before displaying the chart, it was saved as a PNG image with high resolution.
+
+The resulting visualization, titled 'Random Forest Feature Importance', provides a clear understanding of the relative significance of each feature in predicting the transit depth, as discerned by the Random Forest model.
+
+
+
+```python
+from IPython.display import Image
+Image(filename='PME.png')
+
+```
+
+
+
+
+    
+![png](./research_statement_11_0.png)
+    
+
+
+
+## PME Feature Importance Analysis
+
+Using a modeling technique, the impact of different exoplanetary features on the observed transit depth was assessed, and their importance was visualized in the attached figure titled 'PME Feature Importance'. Here's a breakdown of the visual representation:
+
+1. **Most Influential Feature**: The `planet_radius` stands out as the most influential feature with the highest PME (Predictive Modeling Estimate) value. This suggests that the radius of the planet plays a pivotal role in determining the observed transit depth.
+
+2. **Other Features**: Logarithmic concentrations of gases, such as `log_co2`, `log_co`, `log_nh3`, `log_h2o`, and `log_ch4`, also exhibit varying degrees of importance. Among these, `log_co2` and `log_co` are the more significant contributors compared to others.
+
+3. **Least Influential Feature**: The `planet_temp`, representing the temperature of the planet, has the least importance in this analysis, suggesting its minimal role in influencing the transit depth, at least according to the PME metric.
+
+4. **Visual Clarity**: The horizontal bar chart offers a lucid comparison of feature importances. Each bar's length represents the PME value of a feature, providing a direct visual cue to its significance.
+
+5. **Interpretation**: This visualization aids in discerning which exoplanetary characteristics are most relevant when predicting the transit depth using the given model. It can guide future analyses by highlighting key features to focus on or, conversely, those that might be less consequential.
+
+By examining the 'PME Feature Importance' chart, one gains a deeper understanding of the relative significance of each feature in predicting the transit depth within this specific modeling context.
+
+
+## Uncertainty Quantification and Feature Reduction in PME Feature Importance Analysis
+
+When delving deep into the realms of uncertainty quantification and feature reduction in predictive modeling, it's crucial to evaluate feature importance metrics critically. The provided PME (Predictive Modeling Estimate) Feature Importance Analysis offers a valuable lens for this task. Below is a nuanced exploration of its significance in the described contexts:
+
+### **Uncertainty Quantification**:
+
+1. **Origin of Uncertainty**: 
+    - In exoplanetary spectral analysis, uncertainty can arise from observational noise, instrumental errors, or intrinsic variability of the observed phenomena. This uncertainty often manifests in the form of error bars in spectra, like the ones shown in transit depth against wavelengths.
+
+2. **Feature Impact on Uncertainty**: 
+    - The degree of influence a feature has on the predicted outcome can be a proxy for how that feature might contribute to the overall predictive uncertainty. If a feature like `planet_radius` has a high PME value, it might be a critical determinant of transit depth. Any uncertainty in measuring or estimating the `planet_radius` could propagate and significantly affect the prediction's reliability.
+
+3. **PME as a Measure of Stochastic Uncertainty**: 
+    - The PME values themselves might be obtained by analyzing a model's sensitivity to perturbations in input features. A high PME value indicates that slight changes in the feature can lead to notable changes in the output, thereby implying a greater inherent stochastic uncertainty tied to that feature.
+
+### **Feature Reduction**:
+
+1. **Identifying Critical Features**: 
+    - When dealing with a multitude of features, not all may be equally relevant. The PME analysis provides a hierarchy of feature importance. In this case, while `planet_radius` emerges as crucial, `planet_temp` appears less consequential. This differentiation is fundamental for feature reduction, guiding us on which features to prioritize in modeling.
+
+2. **Reducing Dimensionality &amp; Complexity**: 
+    - In data-driven modeling, especially with limited data points, overfitting is a genuine concern. By understanding which features significantly influence the predictions (like `planet_radius` or `log_co2`), one can potentially reduce the model's complexity and the risk of overfitting by focusing only on these paramount features.
+
+3. **Informing Experimental Design**: 
+    - If further observational or experimental data is required, knowing feature importances can guide where resources are channeled. For instance, more precise measurements might be sought for features with high PME values, as their accurate estimation is vital for reliable predictions.
+
+4. **Trade-off with Predictive Performance**: 
+    - It's essential to understand that while feature reduction can simplify models and make them more interpretable, there's always a trade-off with predictive performance. Removing features based on their PME values should be done judiciously, ensuring that the model's predictive capability isn't unduly compromised.
+
+In summary, the 'PME Feature Importance' chart isn't merely a representation of feature significance but serves as a cornerstone for rigorous analytical decisions in uncertainty quantification and feature reduction. Analyzing such importance metrics within the broader context of the problem at hand ensures that models are both robust and interpretable, catering effectively to the dual objectives of predictive accuracy and analytical clarity.
+
+
+### Weighted Principal Component Analysis (PCA) on Exoplanet Data
+
+#### **Conceptual Overview**:
+
+PCA is a method used to emphasize variation and capture strong patterns in a dataset. The "weighted PCA" approach fine-tunes this by considering the importance of different features, effectively giving more attention to features deemed vital.
+
+#### **Detailed Breakdown**:
+
+1. **Standardization**:
+    - Before applying PCA, the dataset is standardized to give each feature a mean of 0 and a variance of 1. This is essential because PCA is influenced by the scale of the data.
+
+2. **Weighted Features**:
+    - Features are weighted according to their importance, as identified by the Random Forest model. Taking the square root of the weights ensures proper scaling during matrix multiplication in PCA.
+
+3. **PCA Application**:
+    - PCA projects the data into a new space defined by its principal components. The first two components often hold most of the dataset's variance, making them crucial for visualization.
+
+4. **Visualization**:
+    - The scatter plot visualizes the data in the space of the first two principal components. The color indicates `Transit Depth (x1)`, shedding light on how this parameter varies across the main patterns in the data.
+
+5. **Explained Variance**:
+    - This provides an understanding of how much original variance the first two components capture. A high percentage indicates that the PCA representation retains much of the data's original structure.
+
+#### **Significance**:
+
+1. **Data Compression**:
+    - PCA offers a simplified yet rich representation of the data, which can be invaluable for visualization and pattern recognition.
+
+2. **Feature Emphasis**:
+    - Using feature importances ensures the PCA representation highlights the most critical patterns related to influential features.
+
+3. **Framework for Further Exploration**:
+    - Observing patterns or groupings in the PCA plot can guide subsequent investigations, pinpointing areas of interest or potential clusters.
+
+4. **Efficient Data Overview**:
+    - The visualization provides a comprehensive but digestible overview of the data, suitable for a wide range of audiences.
+
+In essence, weighted PCA melds the dimensionality reduction capabilities of PCA with the interpretative power of feature importances, offering a profound view into the dataset's intricate structures and relationships.
+
+
+
+
+```python
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+
+# Standardize the feature matrix
+X_scaled = StandardScaler().fit_transform(X)
+
+# Multiply each feature by its square root of importance weight for weighted PCA
+# The square root is used because each feature contributes to both rows and columns in the dot product calculation
+X_weighted = X_scaled * np.sqrt(feature_importances)
+
+# Perform PCA on the weighted data
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_weighted)
+
+# Plotting the first two principal components
+plt.figure(figsize=(10, 7))
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis', edgecolor='k', s=40)
+plt.colorbar().set_label('Transit Depth (x1)', rotation=270, labelpad=15)
+plt.xlabel('Weighted Principal Component 1')
+plt.ylabel('Weighted Principal Component 2')
+plt.title('Weighted PCA: First Two Principal Components')
+plt.show()
+
+# Variance explained by the first two principal components
+variance_explained = pca.explained_variance_ratio_
+variance_explained
+
+```
+
+
+    
+![png](./research_statement_15_0.png)
+    
+
+
+
+
+
+    array([0.71985328, 0.10370239])
+
+
+
+
+```python
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Your data initialization (this part is assumed, as you haven't provided it in the original code)
+# X, y, feature_importances = ...
+
+# Standardize the feature matrix
+X_scaled = StandardScaler().fit_transform(X)
+
+# Multiply each feature by its square root of importance weight for weighted PCA
+X_weighted = X_scaled * np.sqrt(feature_importances)
+
+# Perform PCA on the weighted data with three components
+pca = PCA(n_components=3)
+X_pca = pca.fit_transform(X_weighted)
+
+# Plotting the first three principal components
+fig = plt.figure(figsize=(10, 7))
+ax = fig.add_subplot(111, projection='3d')
+scatter = ax.scatter(X_pca[:, 0], X_pca[:, 1], X_pca[:, 2], c=y, cmap='viridis', edgecolor='k', s=40)
+plt.colorbar(scatter, ax=ax, pad=0.2).set_label('Transit Depth (x1)', rotation=270, labelpad=15)
+ax.set_xlabel('Weighted Principal Component 1')
+ax.set_ylabel('Weighted Principal Component 2')
+ax.set_zlabel('Weighted Principal Component 3')
+plt.title('Weighted PCA: First Three Principal Components')
+plt.show()
+
+# Variance explained by the first three principal components
+variance_explained = pca.explained_variance_ratio_
+variance_explained
+
+```
+
+
+    
+![png](./research_statement_16_0.png)
+    
+
+
+
+
+
+    array([0.71985328, 0.10370239, 0.07160805])
+
+
+
+
+```python
+# side by side
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Your data initialization (this part is assumed, as you haven't provided it in the original code)
+# X, y, feature_importances = ...
+
+# Standardize the feature matrix
+X_scaled = StandardScaler().fit_transform(X)
+
+# Multiply each feature by its square root of importance weight for weighted PCA
+X_weighted = X_scaled * np.sqrt(feature_importances)
+
+# Create a combined figure with subplots
+fig, axes = plt.subplots(1, 2, figsize=(20, 7))
+
+# Perform PCA on the weighted data with two components and plot
+pca2 = PCA(n_components=2)
+X_pca2 = pca2.fit_transform(X_weighted)
+scatter_2d = axes[0].scatter(X_pca2[:, 0], X_pca2[:, 1], c=y, cmap='viridis', edgecolor='k', s=40)
+fig.colorbar(scatter_2d, ax=axes[0], orientation='vertical').set_label('Transit Depth (x1)', rotation=270, labelpad=15)
+axes[0].set_xlabel('Weighted Principal Component 1')
+axes[0].set_ylabel('Weighted Principal Component 2')
+axes[0].set_title('Weighted PCA: First Two Principal Components')
+
+# Perform PCA on the weighted data with three components and plot
+pca3 = PCA(n_components=3)
+X_pca3 = pca3.fit_transform(X_weighted)
+ax3d = fig.add_subplot(1, 2, 2, projection='3d')
+scatter_3d = ax3d.scatter(X_pca3[:, 0], X_pca3[:, 1], X_pca3[:, 2], c=y, cmap='viridis', edgecolor='k', s=40)
+fig.colorbar(scatter_3d, ax=ax3d, pad=0.2).set_label('Transit Depth (x1)', rotation=270, labelpad=15)
+ax3d.set_xlabel('Weighted Principal Component 1')
+ax3d.set_ylabel('Weighted Principal Component 2')
+ax3d.set_zlabel('Weighted Principal Component 3')
+ax3d.set_title('Weighted PCA: First Three Principal Components')
+
+# Display the combined plot
+plt.tight_layout()
+plt.savefig('wPCA_2D_3D.png', bbox_inches='tight', dpi=300)  # 'bbox_inches' ensures the entire plot is saved
+
+plt.show()
+
+```
+
+
+    
+![png](./research_statement_17_0.png)
+    
+
+
+
+```python
+import pandas as pd
+import seaborn as sns
+
+# Your data initialization (this part is assumed, as you haven't provided it in the original code)
+# df, feature_columns, transit_depth_column = ...
+
+# Reconstruct the approximate original data using the first three principal components
+reconstructed_data = np.dot(X_pca, pca.components_[:3, :]) + np.mean(X_scaled, axis=0)
+
+# Create a DataFrame for the reconstructed data
+reconstructed_df = pd.DataFrame(reconstructed_data, columns=feature_columns)
+
+# Visualize the approximate original histograms
+fig, axes = plt.subplots(1, len(feature_columns) + 1, figsize=(18, 4))  # Adjusted for the number of features
+for i, col in enumerate(feature_columns):
+    sns.histplot(reconstructed_df[col], bins=20, kde=True, ax=axes[i], color='orange')
+    axes[i].set_title(f'Approx of {col}')
+
+# Add visualization for actual transit depth (since it was not part of the PCA)
+sns.histplot(df[transit_depth_column], bins=20, kde=True, ax=axes[-1], color='green')
+axes[-1].set_title(f'Actual {transit_depth_column}')
+
+plt.tight_layout()
+plt.show()
+
+```
+
+
+    
+![png](./research_statement_18_0.png)
+    
+
+
+
+```python
+
+fig, axes = plt.subplots(2, 8, figsize=(18, 8))
+
+# Original Data
+for i, col in enumerate(feature_columns):
+    sns.histplot(df[col], bins=20, kde=True, ax=axes[0, i])
+    axes[0, i].set_title(f'{col}\nMean: {feature_mean[col]:.2f}\nVariance: {feature_variance[col]:.2f}')
+
+sns.histplot(df[transit_depth_column], bins=20, kde=True, ax=axes[0, -1])
+axes[0, -1].set_title(f'{transit_depth_column}\nMean: {transit_depth_mean:.2f}\nVariance: {transit_depth_variance:.2f}')
+
+# Reconstructed Data
+for i, col in enumerate(feature_columns):
+    sns.histplot(reconstructed_df[col], bins=20, kde=True, ax=axes[1, i], color='orange')
+    axes[1, i].set_title(f'Surrogate of {col}')
+
+sns.histplot(df[transit_depth_column], bins=20, kde=True, ax=axes[1, -1], color='green')
+axes[1, -1].set_title(f'Actual {transit_depth_column}')
+
+plt.tight_layout()
+plt.show()
+
+```
+
+
+    
+![png](./research_statement_19_0.png)
+    
+
+
+
+```python
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+
+# Assuming data initialization and feature_importances, feature_columns, and transit_depth_column definitions exist
+
+# Standardize the feature matrix
+X_scaled = StandardScaler().fit_transform(X)
+
+# Multiply each feature by its square root of importance weight for weighted PCA
+X_weighted = X_scaled * np.sqrt(feature_importances)
+
+# Initialize the figure and axes
+fig, axes = plt.subplots(3, len(feature_columns) + 1, figsize=(18, 12))
+
+# Original Data histograms
+for i, col in enumerate(feature_columns):
+    sns.histplot(df[col], bins=20, kde=True, ax=axes[0, i])
+    axes[0, i].set_title(f'Original {col}')
+
+sns.histplot(df[transit_depth_column], bins=20, kde=True, ax=axes[0, -1])
+axes[0, -1].set_title(f'Original {transit_depth_column}')
+
+# Reconstruction using 2 PCs
+pca2 = PCA(n_components=2)
+X_pca2 = pca2.fit_transform(X_weighted)
+reconstructed_data_2PCs = np.dot(X_pca2, pca2.components_[:2, :]) + np.mean(X_scaled, axis=0)
+reconstructed_df_2PCs = pd.DataFrame(reconstructed_data_2PCs, columns=feature_columns)
+
+for i, col in enumerate(feature_columns):
+    sns.histplot(reconstructed_df_2PCs[col], bins=20, kde=True, ax=axes[1, i], color='orange')
+    axes[1, i].set_title(f'2 PCs of {col}')
+
+sns.histplot(df[transit_depth_column], bins=20, kde=True, ax=axes[1, -1], color='green')
+axes[1, -1].set_title(f'Original {transit_depth_column}')
+
+# Reconstruction using 3 PCs
+pca3 = PCA(n_components=3)
+X_pca3 = pca3.fit_transform(X_weighted)
+reconstructed_data_3PCs = np.dot(X_pca3, pca3.components_[:3, :]) + np.mean(X_scaled, axis=0)
+reconstructed_df_3PCs = pd.DataFrame(reconstructed_data_3PCs, columns=feature_columns)
+
+for i, col in enumerate(feature_columns):
+    sns.histplot(reconstructed_df_3PCs[col], bins=20, kde=True, ax=axes[2, i], color='purple')
+    axes[2, i].set_title(f'3 PCs of {col}')
+
+sns.histplot(df[transit_depth_column], bins=20, kde=True, ax=axes[2, -1], color='green')
+axes[2, -1].set_title(f'Original {transit_depth_column}')
+
+plt.tight_layout()
+plt.savefig('wPCA_combined_plot.png', bbox_inches='tight', dpi=500)  # 'bbox_inches' ensures the entire plot is saved
+
+plt.show()
+
+```
+
+
+    
+![png](./research_statement_20_0.png)
+    
+
+
+### Reconstruction of Exoplanet Data Using Principal Component Analysis (PCA)
+
+The code segment aims to reconstruct exoplanet data using different numbers of principal components (PCs) from PCA, offering insights into how much information retention occurs as we vary the number of PCs.
+
+#### **Data Standardization**:
+- The features undergo standardization, ensuring each feature has a mean of 0 and variance of 1. This normalization is crucial for PCA, as the algorithm is sensitive to varying scales across features.
+
+#### **Weighted Features**:
+- Features are adjusted based on their significance as ascertained by a prior model, specifically the Random Forest. Weighting the features adjusts the emphasis the PCA places on each feature during the dimensionality reduction process.
+
+#### **Data Reconstruction**:
+- After performing PCA, the algorithm seeks to transform the reduced data back to the original high-dimensional space. This "reconstructed" data is an approximation of the original but is built using fewer dimensions.
+
+#### **Visualization of Reconstructions**:
+1. **Original Data Histograms**:
+    - The initial histograms show the distributions of the original features and the transit depth.
+  
+2. **Reconstruction Using 2 Principal Components**:
+    - Using only the first two PCs, the data is reconstructed and its histograms visualized. This illustrates the patterns and distributions captured when only the first two components are considered.
+  
+3. **Reconstruction Using 3 Principal Components**:
+    - An analogous reconstruction is done with three PCs. The addition of a third dimension might capture more nuanced variations in the data.
+
+#### **Significance**:
+1. **Data Compression vs. Retention**:
+    - The visualizations enable us to compare the reconstructions against the original data. We discern how much information is retained and what is lost as we reduce dimensions.
+  
+2. **Guide for Dimensionality Decision**:
+    - By juxtaposing the original with the reconstructions, we gain insights into the optimal number of PCs to use for specific tasks, striking a balance between compression and information retention.
+  
+3. **Empirical Understanding**:
+    - These histograms and visual representations offer a tangible way to grasp the abstract notion of dimensionality reduction. They elucidate how PCA captures the essence of the data while diminishing dimensions.
+
+In conclusion, this analysis, coupled with the visualizations, equips us with a robust understanding of how PCA reconstructs data using varying numbers of components. It underscores the trade-offs involved and the implications of choosing specific dimensionality levels in data-driven tasks.
+
+
+
+
+```python
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import matplotlib.gridspec as gridspec
+
+# Load images
+img_shap = mpimg.imread('shapley.png')
+img_rf = mpimg.imread('random_forest_importance_plot.png')
+img_pme = mpimg.imread('PME.png')
+
+# Create a grid for the subplots
+fig_combined = plt.figure(figsize=(20, 12))
+gs = gridspec.GridSpec(2, 2, width_ratios=[1, 1])
+
+# Display SHAP plot
+ax0 = plt.subplot(gs[0])
+ax0.imshow(img_shap)
+ax0.axis('off')
+
+# Display RF Importance plot
+ax1 = plt.subplot(gs[1])
+ax1.imshow(img_rf)
+ax1.axis('off')
+
+# Display PME image in the middle of the 2nd row
+ax2 = plt.subplot(gs[2:4])  # This makes the PME plot span both columns on the second row
+ax2.imshow(img_pme)
+ax2.axis('off')
+
+plt.tight_layout()
+plt.savefig('sensitivity_combined_plot.png', bbox_inches='tight', dpi=300)  # 'bbox_inches' ensures the entire plot is saved
+
+plt.show()
+
+```
+
+
+    
+![png](./research_statement_22_0.png)
+    
+
+
+
+This code snippet consolidates and displays three distinct plots—SHAP values, Random Forest Feature Importance, and PME Feature Importance—into a single visualization. The images are loaded and arranged in a 2x2 grid, with the SHAP and Random Forest plots on the top row, and the PME plot spanning both columns on the bottom row. After layout adjustments, the combined visualization is saved as a high-resolution PNG image titled 'sensitivity_combined_plot.png' and then displayed.
+
+### Reference
+
+Changeat, Q., &amp; Yip, K. H. (2023). ESA-Ariel Data Challenge NeurIPS 2022: Introduction to exo-atmospheric studies and presentation of the Atmospheric Big Challenge (ABC) Database. *arXiv preprint arXiv:2206.14633*.
+
+Herin, M., Il Idrissi, M., Chabridon, V., &amp; Iooss, B. (2022). Proportional marginal effects for global sensitivity analysis. arXiv preprint arXiv:2210.13065.
+
+
+
+
+
+```python
+
+```</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>rm research_statement.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><span class="faux-block">© 2023 Deepak Bastola</span></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right"><span class="faux-block"><a href="https://github.com/deepbas/">View source on GitHub</a></span></div>
+  </div>
+</footer>
+
+
+
+</body></html>

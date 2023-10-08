@@ -42,8 +42,6 @@ website:
   page-footer: 
     left: |
       <span class="faux-block">&#169; 2023 Deepak Bastola</span>
-    center: |
-      <span class="faux-block"><a href="https://www./">View the tutorial for this template!</a></span>
     right: |
       <span class="faux-block"><a href="https://github.com/deepbas/">View source on GitHub</a></span>
 

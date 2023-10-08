@@ -26,12 +26,7 @@ about:
 
 # Welcome to my website!
 
-I am a visiting assistant professor of statistics at Carleton College. My research interests include Bayesian statistics, time series methodology, and statistical computation.
+I am a visiting assistant professor of statistics at Carleton College. My research interests include Bayesian statistics, time series methodology, and statistical computation.  My research interests include Bayesian statistics, time series methodology, and statistical computation.
 
 
-<!-- ```{=html} -->
-<!-- <div  style="margin: 30px; text-align: center;"> -->
-<!-- <a class="btn btn-primary" href="https://deepbas.io/" role="button" target="_blank" style="padding: 15px 30px;">View the tutorial for this template (+ download link)</a> -->
-<!-- </div> -->
-<!-- ``` -->
 

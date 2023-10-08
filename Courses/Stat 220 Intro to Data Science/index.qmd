@@ -1,0 +1,10 @@
+---
+title: "Stat 120: Intro to Statistics"
+---
+
+This course provides an introduction to the foundational concepts of statistics. We will explore...
+
+- Syllabus
+- Lecture Notes
+- Assignments
+...
